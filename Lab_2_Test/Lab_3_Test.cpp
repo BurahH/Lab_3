@@ -1,16 +1,19 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
 
-#include "../АИСД_Lab_2/Class.h"
+#include "../АИСД_Lab_2/Iterator.h"
+#include "../АИСД_Lab_2/Queue.h"
+#include "../АИСД_Lab_2/Stack.h"
+#include "../АИСД_Lab_2/Binary_tree.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Lab2Test
 {
-	TEST_CLASS(Test_Classcpp)
+	TEST_CLASS(Test_Binary_treecpp)
 	{
 	public:
-		
+
 		TEST_METHOD(Test_contains)
 		{
 			Binary_Tree tree;
@@ -20,7 +23,7 @@ namespace Lab2Test
 			tree.insert(1);
 			tree.insert(6);
 			tree.insert(4);
-            Assert::AreEqual(tree.contains(8), true);
+			Assert::AreEqual(tree.contains(8), true);
 			Assert::AreEqual(tree.contains(10), true);
 			Assert::AreEqual(tree.contains(3), true);
 			Assert::AreEqual(tree.contains(1), true);
@@ -209,6 +212,11 @@ namespace Lab2Test
 			Assert::AreEqual(lst_iterator->next(&queue), 7);
 			Assert::AreEqual(lst_iterator->next(&queue), 13);
 		}
+	};
+	TEST_CLASS(Tess_Stackcpp)
+	{
+	public:
+
 		TEST_METHOD(Test_stack_add_item)
 		{
 			ListStack stack;
@@ -278,6 +286,10 @@ namespace Lab2Test
 			stack.delete_item();
 			Assert::AreEqual(stack.Empty(), true);
 		}
+	};
+		TEST_CLASS(Test_Queuecpp)
+		{
+		public:
 
 		TEST_METHOD(Test_queue_add_item)
 		{

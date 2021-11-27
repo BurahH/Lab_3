@@ -2,22 +2,10 @@
 
 using namespace std;
 
-#include "Class.h"
-
-bool myiterator::has_next()
-{
-	return false;
-}
-
-int myiterator::next(ListStack* stack)
-{
-	return -1;
-}
-
-int myiterator::next(ListQueue* queue)
-{
-	return -2;
-}
+#include "Binary_tree.h"
+#include "Queue.h"
+#include "Stack.h"
+#include "Iterator.h"
 
 Binary_Tree::Binary_Tree()
 {
@@ -281,57 +269,6 @@ bool Binary_Tree::DFT_Iterator::has_next()
 	return current != nullptr;
 }
 
-ListStack::ListStack()
-{
-	head = NULL;
-	size = 0;
-}
-ListStack::~ListStack()
-{
-	while (size)
-		delete_item();
-}
-void ListStack::add_item(Tree* tree)
-{
-	if (head == NULL)
-		head = new Stack(tree);
-	else
-	{
-		Stack* temp = new Stack(tree);
-		temp->next = head;
-		head = temp;
-	}
-	size++;
-}
-void ListStack::delete_item()
-{
-	if (head != NULL)
-	{
-		Stack* current;
-		current = head->next;
-		delete(head);
-		head = current;
-		size--;
-	}
-	else
-	{
-		throw out_of_range("deletion isn't possible, the list is empty");
-	}
-}
-
-Tree* ListStack::gettree()
-{
-	if(head != NULL)
-	    return head->tree;
-	else
-		throw out_of_range("The stack is empty");
-}
-
-bool ListStack::Empty()
-{
-	return head == NULL;
-}
-
 myiterator* Binary_Tree::create_BFT_itetator()
 {
 	return new BFT_Iterator(root);
@@ -366,64 +303,4 @@ int Binary_Tree::BFT_Iterator::next(ListQueue* queue)
 bool Binary_Tree::BFT_Iterator::has_next()
 {
 	return current != nullptr;
-}
-
-
-
-ListQueue::ListQueue()
-{
-	head = NULL;
-	last = NULL;
-	size = 0;
-}
-ListQueue::~ListQueue()
-{
-	while (size)
-		delete_item();
-}
-void ListQueue::add_item(Tree* tree)
-{
-	if (head == NULL)
-	{
-		Queue* temp = new Queue(tree);
-		head = temp;
-		last = temp;
-	}
-	else
-	{
-		Queue* temp = new Queue(tree);
-		last->next = temp;
-		last = temp;
-	}
-	size++;
-}
-void ListQueue::delete_item()
-{
-	if (head != NULL)
-	{
-		Queue* current;
-		current = head->next;
-		delete(head);
-		head = current;
-		if (head == NULL)
-			last = NULL;
-		size--;
-	}
-	else
-	{
-		throw out_of_range("deletion isn't possible, the list is empty");  //Exception if list is empty
-	}
-}
-
-Tree* ListQueue::gettree()
-{
-	if (head != NULL)
-		return head->tree;
-	else
-		throw out_of_range("The stack is empty");
-}
-
-bool ListQueue::Empty()
-{
-	return head == NULL;
 }

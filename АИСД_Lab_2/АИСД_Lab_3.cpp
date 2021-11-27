@@ -2,7 +2,10 @@
 
 using namespace std;
 
-#include "Class.h"
+#include "Binary_tree.h"
+#include "Stack.h"
+#include "Queue.h"
+#include "Iterator.h"
 
 int main()
 {
